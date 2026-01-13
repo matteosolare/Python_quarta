@@ -14,13 +14,24 @@ def main():
     "Chiara": 7
     }
 
-    voti = []
-    for nome in studenti_voti:
-        voti.append(studenti_voti[nome])
-    print(voti)
+    diz_contatori = {} #la chiave è il voto, il valore è il numero di occorrenze
 
-    for voto in voti:
-        pass
+    for nome in studenti_voti:
+        voto = studenti_voti[nome]
+        if voto in diz_contatori:
+            diz_contatori[voto] += 1
+        else:
+            diz_contatori[voto] = 1
+    print(diz_contatori)
+
+    voto_piu_frequente = 0
+    frequenza_max = 0
+
+    for voto in diz_contatori:
+        if diz_contatori[voto] > frequenza_max:
+            frequenza_max = diz_contatori[voto]
+            voto_piu_frequente = voto
+    print(f"Il voto più frequente è {voto_piu_frequente}, ed è capitato {frequenza_max} volte")
 
 if __name__ == "__main__":
     main()
