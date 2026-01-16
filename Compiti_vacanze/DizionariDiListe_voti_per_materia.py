@@ -25,9 +25,7 @@ def calcola_media_piu_alta(voti_materie):
 def add_voto(voti_materie, materia):
 
     voto = 8
-
     voti_materie[materia].append(voto)
-
     return voti_materie[materia]
 
 
