@@ -1,22 +1,26 @@
-import socket 
-SERVER_CHAT = ("127.0.0.1", 12345) #LO STESSO PER TUTTI I CLIENT
-NICKNAME = "JHONDOE" #ogni client ha il suo
-SEPARATORE = "|"
+import socket
+
+SERVER_CHAT = ("localhost", 12345) # lo stesso per tutti i client
+NICKNAME = "JohnDoe" # ogni client ha il suo
+SEPARATORE = " | "
+
 def main():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) #crea un socket
+    # implementare un messaggio di HELLO (benvenuto) in cui il client si presenta al server
+    s.sendto(f"Server | Il mio nome è '{NICKNAME}'".encode(), SERVER_CHAT)
 
-    #implementare un messaggio di HELLO in cui il client si presenta al server
+    while True:
+        messaggio = input("DESTINATARIO | MESSAGGIO -> ")
 
-    messaggio = input("DESTINATARIO | MESSAGGIO -> ") #stringa
-    campi = messaggio.split("|")
-    if len(campi) == 2:
-        dest, mess = campi
-        s.sendto(f"{dest}{SEPARATORE}{mess}".encode(), SERVER_CHAT)
-    else:
-        print("ERRORE")
+        campi = messaggio.split(SEPARATORE)
+        if len(campi) == 2:
+            dest, mess = campi
+            s.sendto(f"{dest}{SEPARATORE}{mess}".encode(), SERVER_CHAT)
+            if mess.upper() == "EXIT": break
 
-
+        else:
+            print("errore")
 
     s.close()
 
