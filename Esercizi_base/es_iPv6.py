@@ -1,8 +1,4 @@
 def add0s(ip):
-    """
-    prende in input una stringa di max. 4 caratteri e aggiunge degli zeri a sinistra fino a ottenere 4 caratteri
-    """
-
     ip_groups = ip.split(":")
     print(f"ip_groups = {ip_groups}")
     ip_groups = ip.split(":")
@@ -40,6 +36,6 @@ def main():
     ipv6_short = "FDEC:74::B0FF:0:FFF0"
     ipv6_extended = shortToExtended(ipv6_short) # finchè non restituisce niente, ipv6_extended = none
     print(f"IPv6 final extended form = {ipv6_extended}")
-    
+
 if __name__=="__main__":
     main()
