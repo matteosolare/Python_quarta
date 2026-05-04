@@ -27,7 +27,7 @@
 from threading import Thread
 import time
 
-class Thread:
+class MioThread(Thread):
     def __init__(self, nome, secondi):
         super().__init__()  
         self.nome = nome      
@@ -37,12 +37,15 @@ class Thread:
         print(f"{self.nome} avviato")
         time.sleep(self.secondi)
         print(f"{self.nome} terminato dopo {self.secondi} s")
+    
+    def run(self):
+        self.cronometro()
 
 def main():
 
-    t1 = Thread("A", 2)
-    t2 = Thread("B", 4)
-    t3 = Thread("C", 1)
+    t1 = MioThread("A", 2)
+    t2 = MioThread("B", 4)
+    t3 = MioThread("C", 1)
 
     inizio = time.time()  
 
