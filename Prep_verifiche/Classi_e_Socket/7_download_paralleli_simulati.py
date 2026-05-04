@@ -30,15 +30,15 @@ def scarica(url, durata):
 def main():
 
     downloads = [
-        ("youtube.com", 3),
-        ("google.com", 1),
-        ("netflix.com", 4),
-        ("spotify.com", 2),
-        ("github.com", 1),
+        "youtube.com",
+        "google.com",
+        "netflix.com",
+        "spotify.com",
+        "github.com",
     ]
 
     i = 0
-    for url, durata in downloads:
+    for url in downloads:
         scarica(downloads[i], random.randint(1, 4))
         i += 1
 
